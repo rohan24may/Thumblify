@@ -1,0 +1,150 @@
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../context/authContext";
+
+export default function Navbar() {
+  const { isLoggedIn, user, logout } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const closeMenu = () => setIsOpen(false);
+
+  return (
+    <>
+      <motion.nav
+        className="fixed top-0 z-50 flex items-center justify-between w-full py-4 px-6 md:px-16 lg:px-24 xl:px-32 backdrop-blur"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1 }}
+      >
+        <Link to="/">
+          <img src="/logo.svg" alt="logo" className="h-8 w-auto" />
+        </Link>
+
+        {/* Desktop Nav Links */}
+        <div className="hidden md:flex items-center gap-8 transition duration-500">
+          <Link to="/" className="hover:text-pink-300">
+            Home
+          </Link>
+
+          <Link to="/generate" className="hover:text-pink-300">
+            Generate
+          </Link>
+
+          {/* ✅ Logged in: My Generation */}
+          {isLoggedIn && (
+            <Link to="/my-generation" className="hover:text-pink-300">
+              My Generation
+            </Link>
+          )}
+
+          {/* ✅ Always show Community */}
+          <Link to="/community" className="hover:text-pink-300">
+            Community
+          </Link>
+
+          {/* ✅ Only guest: About */}
+          {!isLoggedIn && (
+            <Link to="/about" className="hover:text-pink-300">
+              About
+            </Link>
+            
+          )}
+        </div>
+
+        {/* Right Side */}
+        <div className="flex items-center gap-4">
+          {isLoggedIn ? (
+            <div className="relative group flex items-center gap-4">
+              <button className="rounded-full size-8 bg-white/20 border-2 border-white/10">
+                {user?.name?.charAt(0).toUpperCase()}
+              </button>
+
+              <div className="absolute hidden group-hover:block top-8 right-0 pt-2">
+                <button
+                  onClick={logout}
+                  className="px-4 py-2.5 bg-red-600 hover:bg-red-700 active:scale-95 transition-all rounded-full"
+                >
+                  LogOut
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button
+              onClick={() => navigate("/login")}
+              className="hidden md:block px-6 py-2.5 bg-pink-600 hover:bg-pink-700 active:scale-95 transition-all rounded-full"
+            >
+              Get Started
+            </button>
+          )}
+
+          {/* Mobile Menu Icon */}
+          <button onClick={() => setIsOpen(true)} className="md:hidden">
+            <Menu size={26} className="active:scale-90 transition" />
+          </button>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu */}
+      <div
+        className={`fixed inset-0 z-50 bg-black/40 backdrop-blur flex flex-col items-center justify-center text-lg gap-8 md:hidden transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <Link onClick={closeMenu} to="/">
+          Home
+        </Link>
+
+        <Link onClick={closeMenu} to="/generate">
+          Generate
+        </Link>
+
+        {/* ✅ Logged in: My Generation */}
+        {isLoggedIn && (
+          <Link onClick={closeMenu} to="/my-generation">
+            My Generation
+          </Link>
+        )}
+
+        {/* ✅ Always show Community */}
+        <Link onClick={closeMenu} to="/community">
+          Community
+        </Link>
+
+        {/* ✅ Only guest: About */}
+        {!isLoggedIn && (
+          <Link onClick={closeMenu} to="/about">
+            About
+          </Link>
+        )}
+
+        {/* Auth button */}
+        {isLoggedIn ? (
+          <button
+            onClick={() => {
+              closeMenu();
+              logout();
+            }}
+            className="px-4 py-2.5 bg-red-600 hover:bg-red-700 active:scale-95 transition-all rounded-full"
+          >
+            LogOut
+          </button>
+        ) : (
+          <Link onClick={closeMenu} to="/login">
+            Login
+          </Link>
+        )}
+
+        <button
+          onClick={closeMenu}
+          className="aspect-square size-10 p-1 bg-pink-600 hover:bg-pink-700 transition text-white rounded-md flex items-center justify-center"
+        >
+          <X />
+        </button>
+      </div>
+    </>
+  );
+}

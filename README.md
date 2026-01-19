@@ -2,111 +2,41 @@
 
 ![Thumblify Logo](client/public/logo.svg)
 
-Thumblify is a cutting-edge AI-powered thumbnail generator built with the MERN stack. Create stunning, click-worthy YouTube thumbnails in seconds with our intuitive interface and advanced AI technology.
+AI-powered YouTube thumbnail generator built with MERN stack. Create stunning, click-worthy thumbnails in seconds!
 
 ## ✨ Features
 
-- 🎨 **AI-Powered Generation**: Advanced AI creates professional thumbnails based on your descriptions
-- 📱 **Responsive Design**: Fully responsive design that works on all devices
-- 🎯 **Multiple Styles**: Choose from various artistic styles (Bold & Graphic, Minimalist, Photorealistic, Illustrated, Tech/Futuristic)
-- 🎨 **Color Schemes**: Pre-defined color palettes or custom color selection
-- 📐 **Aspect Ratios**: Support for 16:9, 1:1, and 9:16 ratios
-- 💾 **My Generations**: Save and manage all your generated thumbnails
-- 🔍 **Preview Mode**: See your thumbnails in YouTube-style preview
-- 🔐 **Authentication**: Secure user authentication system
-- 📊 **Dashboard**: Personal dashboard to track your creations
+- 🎨 AI-powered thumbnail generation
+- 📱 Fully responsive design
+- 🎯 Multiple artistic styles (Bold, Minimalist, Photorealistic, Illustrated, Tech)
+- 🎨 Color scheme selection
+- 📐 Multiple aspect ratios (16:9, 1:1, 9:16)
+- 💾 Save and manage generations
+- 🔐 User authentication
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **React 19** - Modern React with hooks and concurrent features
-- **TypeScript** - Type-safe JavaScript
-- **Vite** - Fast build tool and development server
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Smooth animations and transitions
-- **React Router** - Client-side routing
-- **React Hot Toast** - Beautiful toast notifications
-- **Lucide React** - Beautiful icons
+**Frontend:** React 19, TypeScript, Vite, Tailwind CSS, Framer Motion  
+**Backend:** Node.js, Express.js, MongoDB, JWT
 
-### Backend
-- **Node.js** - JavaScript runtime
-- **Express.js** - Web framework for Node.js
-- **MongoDB** - NoSQL database
-- **JWT** - JSON Web Tokens for authentication
-- **bcryptjs** - Password hashing
-- **Multer** - File upload handling
-- **CORS** - Cross-origin resource sharing
+## 🚀 Quick Start
 
-## 🚀 Getting Started
+```bash
+# Clone repository
+git clone https://github.com/your-username/thumblify.git
+cd thumblify
 
-### Prerequisites
+# Install dependencies
+cd server && npm install
+cd ../client && npm install
 
-- Node.js (v16 or higher)
-- npm or yarn
-- MongoDB database
-- Git
+# Setup environment variables (see .env.example)
+# Start MongoDB
 
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/thumblify.git
-   cd thumblify
-   ```
-
-2. **Install server dependencies**
-   ```bash
-   cd server
-   npm install
-   ```
-
-3. **Install client dependencies**
-   ```bash
-   cd ../client
-   npm install
-   ```
-
-4. **Environment Setup**
-
-   Create `.env` files in both server and client directories:
-
-   **Server (.env)**
-   ```env
-   PORT=4000
-   MONGODB_URI=mongodb://localhost:27017/thumblify
-   JWT_SECRET=your-super-secret-jwt-key-here
-   CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
-   CLOUDINARY_API_KEY=your-cloudinary-api-key
-   CLOUDINARY_API_SECRET=your-cloudinary-api-secret
-   GOOGLE_CLIENT_ID=your-google-client-id
-   GOOGLE_CLIENT_SECRET=your-google-client-secret
-   ```
-
-   **Client (.env)**
-   ```env
-   VITE_BASE_URL=http://localhost:4000
-   VITE_GOOGLE_CLIENT_ID=your-google-client-id
-   ```
-
-5. **Start MongoDB**
-   Make sure MongoDB is running on your system.
-
-6. **Start the development servers**
-
-   **Terminal 1 - Start Backend:**
-   ```bash
-   cd server
-   npm run dev
-   ```
-
-   **Terminal 2 - Start Frontend:**
-   ```bash
-   cd client
-   npm run dev
-   ```
-
-7. **Open your browser**
-   Navigate to `http://localhost:5173` to see the application running!
+# Start servers
+cd server && npm run dev    # Backend on port 4000
+cd ../client && npm run dev # Frontend on port 5173
+```
 
 ## 📁 Project Structure
 

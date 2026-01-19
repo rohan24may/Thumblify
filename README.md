@@ -62,4 +62,3 @@ thumblify/
 
 ---
 
-Made with ❤️ by Rohan Hudati

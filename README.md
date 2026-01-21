@@ -58,7 +58,7 @@ thumblify/
 
 **Author**: Rohan Hudati  
 **Email**: rohanabcd0305@gmail.com  
-**GitHub**: [@rohanhudati](https://github.com/rohanhudati)
+**GitHub**: [@rohanhudati](https://github.com/rohan24may)
 
 ---
 
